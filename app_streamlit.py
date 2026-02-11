@@ -44,7 +44,7 @@ def main():
     st.markdown("---")
 
     # --- Initialize Retriever (Cached) ---
-    if "retriever" not in st.session_state:
+    if "retriever" not in st.session_state or not hasattr(st.session_state.retriever, "retrieve_grouped"):
         try:
             st.session_state.retriever = LawRetriever(
                 persist_directory="data/chroma",

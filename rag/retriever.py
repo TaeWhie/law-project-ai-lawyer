@@ -188,16 +188,34 @@ class LawRetriever:
     def _get_article_numbers_for_category(self, cat: Dict) -> List[str]:
         """Return article numbers associated with a category."""
         allowed_nums = []
+        
+        # 1. Broad Range (Integer articles)
         start = cat.get("start_num")
         end = cat.get("end_num")
         if start and end:
             for i in range(int(start), int(end) + 1):
                 allowed_nums.append(str(i))
         
+        # 2. Explicit Core Articles (including sub-articles like '76의2')
         for core in cat.get("core_articles", []):
             num = str(core["num"])
             if num not in allowed_nums:
                 allowed_nums.append(num)
+            
+            # Add sub-articles (e.g., 76 -> 76의2)
+            sub_articles = core.get("sub_articles", [])
+            for sub in sub_articles:
+                if isinstance(sub, dict):
+                    # Handle possible complex objects if index grows
+                    sub_val = str(sub.get("num", ""))
+                else:
+                    sub_val = str(sub)
+                
+                if sub_val:
+                    # Indexer format is '76의2'
+                    sub_num = f"{num}의{sub_val}"
+                    if sub_num not in allowed_nums:
+                        allowed_nums.append(sub_num)
         return allowed_nums
 
     def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2) -> List[str]:

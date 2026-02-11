@@ -9,8 +9,8 @@ load_dotenv()
 def verify():
     print("Initializing Retriever...")
     retriever = LawRetriever(persist_directory="data/chroma", collection_name="statutes")
-    # Test Query: Money + Bullying
-    custom_query = "돈도 못받았는데 상사가 날괴롭혀"
+    # Test Query: Pure Harassment
+    custom_query = "상사가 날 괴롭혀"
     print(f"Query: {custom_query}")
     
     print("Retrieving Grouped Results...")
