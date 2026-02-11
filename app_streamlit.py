@@ -14,18 +14,26 @@ from dotenv import load_dotenv
 # Load env - Load this before any other logic
 load_dotenv()
 
-# --- Streamlit Cloud Compatibility ---
-# LangChain needs os.environ['OPENAI_API_KEY'], but Streamlit Cloud stores it in st.secrets.
-# We manually bridge them if needed.
-if "OPENAI_API_KEY" in st.secrets:
-    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
-
 # --- Page Config (Must be first) ---
 st.set_page_config(
     page_title="AI 법률 조항 추천기",
     layout="wide",  # Use full width
     initial_sidebar_state="expanded"
 )
+
+# --- Streamlit Cloud Compatibility ---
+# Bridge st.secrets to os.environ for LangChain
+if "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
+# Debug: Check API Key Status
+api_key_status = "✅ 설정됨" if os.getenv("OPENAI_API_KEY") else "❌ 미설정 (Secrets 확인 필요)"
+with st.sidebar:
+    st.markdown(f"**API Key 상태**: {api_key_status}")
+    if os.getenv("OPENAI_API_KEY"):
+        st.success("API 키가 감지되었습니다.")
+    else:
+        st.error("Secrets에 OPENAI_API_KEY를 설정해주세요.")
 
 # --- Bypass Streamlit's Email Prompt ---
 if "user_email" not in st.session_state:
