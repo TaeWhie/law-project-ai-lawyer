@@ -1,0 +1,2287 @@
+{
+    "version": "2.0",
+    "last_updated": "2026-02-10T21:04:22.880891",
+    "laws": {
+        "근로기준법": {
+            "foundational_query": "근로기준법 총칙(제1조~제14조) 및 법의 적용범위",
+            "categories": [
+                {
+                    "cat_code": "C1",
+                    "korean": "총칙",
+                    "description": "근로기준법의 목적, 정의, 적용범위 등 법의 기본 원칙과 해석에 관한 조항을 다룬다.",
+                    "start_num": 1,
+                    "end_num": 14,
+                    "search_keywords": [
+                        "목적",
+                        "정의",
+                        "적용범위",
+                        "목적·정의",
+                        "총칙"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "1",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "1",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "1",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "2",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "2",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "4",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "30",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "57",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "2",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "4",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "30",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "57",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "3",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "3",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "3",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "4",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "4",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "4",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "5",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "5",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "5",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "6",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "6",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "6",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "7",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "7",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "8",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "5",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "5",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "9",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "9",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "9",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "10",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "10",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "10",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "11",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "7",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "11",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "11",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "12",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "12",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "12",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "13",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "13",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "13",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "14",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "14",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "14",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "40",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "40",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "40",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "41",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "20",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "41",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "20",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "41",
+                                    "type": "규"
+                                }
+                            ]
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "107",
+                            "type": "법"
+                        },
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_3142"
+                },
+                {
+                    "cat_code": "C2",
+                    "korean": "근로계약의 일반 원칙",
+                    "description": "근로조건의 결정·명시 및 기본 계약 관련 원칙을 다룬다.",
+                    "start_num": 15,
+                    "end_num": 35,
+                    "search_keywords": [
+                        "근로계약",
+                        "근로조건의 결정",
+                        "계약기간",
+                        "명시"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "15",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "15",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "15",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "16",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "16",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "16",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "17",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "17",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "17",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "18",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "9",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "9",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "19",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "19",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "19",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "20",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "20",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "20",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "21",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "21",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "21",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "22",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "23",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "23",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "23",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "24",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "10",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "24",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "10",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "24",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "25",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "25",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "25",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "26",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "26",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "26",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "27",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "27",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "27",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "28",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "28",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "29",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "28",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "29",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "29",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "29",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "29",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "30",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "30",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "30",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "31",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "31",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "31",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "32",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "32",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "32",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "33",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "12",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "13",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "33",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "12",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "13",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "33",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "34",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "34",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "34",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "35",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "35",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "35",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "36",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "36",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "36",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "37",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "17",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "37",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "17",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "37",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "38",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "38",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "38",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "39",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "19",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "39",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "19",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "39",
+                                    "type": "규"
+                                }
+                            ]
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "107",
+                            "type": "법"
+                        },
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "111",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_5072"
+                },
+                {
+                    "cat_code": "C3",
+                    "korean": "임금",
+                    "description": "임금의 지급, 시효, 체불 등 임금 관련 규정을 다룬다.",
+                    "start_num": 42,
+                    "end_num": 60,
+                    "search_keywords": [
+                        "임금",
+                        "지급",
+                        "체불",
+                        "임금채권"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "42",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "42",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "42",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "43",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "2",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "27",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "43",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "2",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "27",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "43",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "44",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "24",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "44",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "24",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "44",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "45",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "25",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "45",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "25",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "45",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "46",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "26",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "46",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "26",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "46",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "47",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "47",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "47",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "48",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "48",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "48",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "49",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "49",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "49",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "50",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "51",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "52",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "53",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "54",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "55",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "56",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "57",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "58",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "59",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "60",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "36",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "36",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "36",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "37",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "17",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "37",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "17",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "18",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "37",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "38",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "38",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "38",
+                                    "type": "규"
+                                }
+                            ]
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "109",
+                            "type": "법"
+                        },
+                        {
+                            "num": "113",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_6329"
+                },
+                {
+                    "cat_code": "C4",
+                    "korean": "근로시간와 휴식",
+                    "description": "근로시간, 휴게, 휴일, 연장근로 등 시간제 규정",
+                    "start_num": 50,
+                    "end_num": 66,
+                    "search_keywords": [
+                        "근로시간",
+                        "휴게",
+                        "휴일",
+                        "연장"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "50",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "50",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "50",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "51",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "28",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "51",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "28",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "51",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "52",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "29",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "52",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "29",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "52",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "53",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "53",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "53",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "54",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "54",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "54",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "55",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "30",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "55",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "30",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "55",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "56",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "56",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "56",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "57",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "57",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "57",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "58",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "31",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "31",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "59",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "59",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "59",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "60",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "61",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "62",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "63",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "64",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "65",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "66",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "109",
+                            "type": "법"
+                        },
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_6070"
+                },
+                {
+                    "cat_code": "C5",
+                    "korean": "연차유급휴가와 그 촉진",
+                    "description": "연차휴가의 부여, 사용촉구, 대체 등 제도적 규정",
+                    "start_num": 60,
+                    "end_num": 63,
+                    "search_keywords": [
+                        "연차",
+                        "휴가",
+                        "촉진",
+                        "대체"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "60",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "7",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "33",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "60",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "33",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "60",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "61",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "62",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "63",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "34",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "34",
+                                    "type": "규"
+                                }
+                            ]
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "110",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_3693"
+                },
+                {
+                    "cat_code": "C6",
+                    "korean": "여성과 소년의 노동",
+                    "description": "연령제한, 임산부 보호, 생리휴가, 육아시간 등 성별 및 연령 차별과 보호 규정",
+                    "start_num": 64,
+                    "end_num": 75,
+                    "search_keywords": [
+                        "최저연령",
+                        "임신",
+                        "생리휴가",
+                        "육아시간",
+                        "보호"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "64",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "35",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "35",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "65",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "40",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "40",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "66",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "22",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "22",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "67",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "68",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "69",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "41",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "41",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "70",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "71",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "72",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "42",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "42",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "73",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "74",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "43",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "43",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "75",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "109",
+                            "type": "법"
+                        },
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_9195"
+                },
+                {
+                    "cat_code": "C7",
+                    "korean": "안전과 보건",
+                    "description": "산업안전, 직장 내 괴롭힘 금지 및 조치 등 직장 환경의 안전과 보건",
+                    "start_num": 76,
+                    "end_num": 87,
+                    "search_keywords": [
+                        "안전",
+                        "괴롭힘",
+                        "조치",
+                        "보건"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "76",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "77",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "78",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "79",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "80",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "81",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "82",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "83",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "84",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "85",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "86",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "87",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "109",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_4350"
+                },
+                {
+                    "cat_code": "C8",
+                    "korean": "재해보상",
+                    "description": "산재 보상, 요양, 휴업보상, 유족보상 등 재해 관련 규정",
+                    "start_num": 78,
+                    "end_num": 92,
+                    "search_keywords": [
+                        "재해",
+                        "보상",
+                        "요양",
+                        "휴업",
+                        "유족"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "78",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "5",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "44",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "5",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "44",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "79",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "5",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "5",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "80",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "5",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "47",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "5",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "47",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "81",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "82",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "48",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "48",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "83",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "84",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "85",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "86",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "87",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "88",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "89",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "90",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "91",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "92",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_2582"
+                },
+                {
+                    "cat_code": "C9",
+                    "korean": "취업규칙과 단체협약",
+                    "description": "취업규칙 작성·신고, 제재규정의 제한, 단체협약의 준수 등 규정",
+                    "start_num": 93,
+                    "end_num": 99,
+                    "search_keywords": [
+                        "취업규칙",
+                        "단체협약",
+                        "감액",
+                        "제재"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "93",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "7",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "7",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "8",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "94",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "95",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "96",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "97",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "98",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "99",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_9618"
+                },
+                {
+                    "cat_code": "C10",
+                    "korean": "기숙사",
+                    "description": "기숙사 생활의 규범, 설치 및 운영 기준",
+                    "start_num": 98,
+                    "end_num": 100,
+                    "search_keywords": [
+                        "기숙사",
+                        "규칙",
+                        "운영"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "98",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "99",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "100",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_3706"
+                },
+                {
+                    "cat_code": "C11",
+                    "korean": "근로감독관 등",
+                    "description": "근로감독관의 임무, 권한, 자료제공 요구 등 감독체계",
+                    "start_num": 101,
+                    "end_num": 106,
+                    "search_keywords": [
+                        "감독관",
+                        "현장조사",
+                        "권한",
+                        "의무"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "101",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "102",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "58",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "58",
+                                    "type": "규"
+                                }
+                            ]
+                        },
+                        {
+                            "num": "103",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "104",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "105",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "106",
+                            "type": "법",
+                            "sub_articles": []
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "110",
+                            "type": "법"
+                        },
+                        {
+                            "num": "114",
+                            "type": "법"
+                        },
+                        {
+                            "num": "116",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_1048"
+                },
+                {
+                    "cat_code": "C12",
+                    "korean": "벌칙",
+                    "description": "법 위반에 대한 벌칙과 양벌규정 등 형사책임",
+                    "start_num": 107,
+                    "end_num": 116,
+                    "search_keywords": [
+                        "벌칙",
+                        "형사책임",
+                        "양벌"
+                    ],
+                    "core_articles": [
+                        {
+                            "num": "107",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "108",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "109",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "110",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "111",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "112",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "113",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "114",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "115",
+                            "type": "법",
+                            "sub_articles": []
+                        },
+                        {
+                            "num": "116",
+                            "type": "법",
+                            "sub_articles": [
+                                {
+                                    "num": "59",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "60",
+                                    "type": "령"
+                                },
+                                {
+                                    "num": "59",
+                                    "type": "규"
+                                },
+                                {
+                                    "num": "60",
+                                    "type": "규"
+                                }
+                            ]
+                        }
+                    ],
+                    "penalty_articles": [
+                        {
+                            "num": "112",
+                            "type": "법"
+                        },
+                        {
+                            "num": "115",
+                            "type": "법"
+                        }
+                    ],
+                    "orphan_articles": [],
+                    "key": "cat_4530"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+.DS_Store
+
+# Streamlit
+.streamlit/secrets.toml
+
+# ChromaDB (We WANT to commit this for this demo, usually ignored)
+# data/chroma/ 
+
+# VS Code
+.vscode/

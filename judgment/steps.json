@@ -1,0 +1,157 @@
+{
+    "WAGE_WORKER_CHECK": {
+        "question": "현재 회사와 고용 관계에 있으신가요? 즉, 회사에서 일을 하고 그에 대한 대가로 급여를 받고 계신가요?",
+        "required_facts": [
+            "is_worker"
+        ],
+        "next": {
+            "YES": "WAGE_DEFINITION_CHECK",
+            "NO": "END_NOT_WORKER",
+            "UNKNOWN": "WAGE_WORKER_CHECK"
+        }
+    },
+    "WAGE_DEFINITION_CHECK": {
+        "question": "지급받지 못한 돈이 '일한 대가로 받기로 한 급여(임금)'에 해당하는 금액인가요?",
+        "required_facts": [
+            "is_wage"
+        ],
+        "next": {
+            "YES": "WAGE_DUE_DATE_CHECK",
+            "NO": "END_NOT_WAGE",
+            "UNKNOWN": "WAGE_DEFINITION_CHECK"
+        }
+    },
+    "WAGE_DUE_DATE_CHECK": {
+        "question": "급여를 받기로 한 날짜가 이미 지났나요? 혹은 퇴직하신 지 14일이 넘었나요?",
+        "required_facts": [
+            "payment_day_passed"
+        ],
+        "next": {
+            "YES": "WAGE_ARREARS_EXIST_CHECK",
+            "NO": "END_NOT_DUE",
+            "UNKNOWN": "WAGE_DUE_DATE_CHECK"
+        }
+    },
+    "WAGE_ARREARS_EXIST_CHECK": {
+        "question": "급여를 일부라도 받지 못하신 부분이 확실히 있나요?",
+        "required_facts": [
+            "unpaid_amount_exists"
+        ],
+        "next": {
+            "YES": "END_SUCCESS_ARREARS",
+            "NO": "END_NO_ARREARS",
+            "UNKNOWN": "WAGE_ARREARS_EXIST_CHECK"
+        }
+    },
+    "DISMISSAL_CHECK": {
+        "question": "회사에서 사용자의 일방적인 의사로 '해고' 통보를 받으셨나요? 아니면 사직을 강요받으셨나요?",
+        "required_facts": [
+            "is_dismissal"
+        ],
+        "next": {
+            "YES": "DISMISSAL_NOTICE_CHECK",
+            "NO": "END_NOT_DISMISSAL",
+            "UNKNOWN": "DISMISSAL_CHECK"
+        }
+    },
+    "DISMISSAL_NOTICE_CHECK": {
+        "question": "해고 통보를 서면(종이 문서나 전자문서)으로 받으셨나요?",
+        "required_facts": [
+            "is_written_notice"
+        ],
+        "next": {
+            "YES": "END_SUCCESS_DISMISSAL",
+            "NO": "END_SUCCESS_DISMISSAL",
+            "UNKNOWN": "DISMISSAL_NOTICE_CHECK"
+        }
+    },
+    "HARASSMENT_SUPERIORITY_CHECK": {
+        "question": "가해자가 직장 내 지위나 관계의 우위(상사, 다수 인원 등)를 이용했나요?",
+        "required_facts": [
+            "has_superiority"
+        ],
+        "next": {
+            "YES": "HARASSMENT_NORM_CHECK",
+            "NO": "END_NOT_HARASSMENT",
+            "UNKNOWN": "HARASSMENT_SUPERIORITY_CHECK"
+        }
+    },
+    "HARASSMENT_NORM_CHECK": {
+        "question": "그 행위가 업무상 적정 범위를 넘어서는 부적절한 행위(폭언, 사적 지시 등)였나요?",
+        "required_facts": [
+            "exceeds_work_norm"
+        ],
+        "next": {
+            "YES": "HARASSMENT_ENVIRONMENT_CHECK",
+            "NO": "END_NOT_HARASSMENT",
+            "UNKNOWN": "HARASSMENT_NORM_CHECK"
+        }
+    },
+    "HARASSMENT_ENVIRONMENT_CHECK": {
+        "question": "그로 인해 정신적/신체적 고통을 겪거나 근무 환경이 악화되었나요?",
+        "required_facts": [
+            "harm_occurred"
+        ],
+        "next": {
+            "YES": "END_SUCCESS_HARASSMENT",
+            "NO": "END_NOT_HARASSMENT",
+            "UNKNOWN": "HARASSMENT_ENVIRONMENT_CHECK"
+        }
+    },
+    "HARASSMENT_CHECK": {
+        "question": "직장 내에서 지위나 관계의 우위를 이용하여 업무상 적정범위를 넘는 고통을 주는 행위(욕설, 폭언, 따돌림 등)가 있었나요?",
+        "required_facts": [
+            "is_harassment"
+        ],
+        "next": {
+            "YES": "HARASSMENT_SUPERIORITY_CHECK",
+            "NO": "END_NOT_HARASSMENT",
+            "UNKNOWN": "HARASSMENT_CHECK"
+        }
+    },
+    "END_SUCCESS_ARREARS": {
+        "is_terminal": true,
+        "result": "ARREARS_PROBABLE",
+        "message": "임금체불 가능성이 높습니다."
+    },
+    "END_SUCCESS_DISMISSAL": {
+        "is_terminal": true,
+        "result": "DISMISSAL_PROBABLE",
+        "message": "부당해고 가능성이 있습니다."
+    },
+    "END_SUCCESS_HARASSMENT": {
+        "is_terminal": true,
+        "result": "HARASSMENT_PROBABLE",
+        "message": "직장 내 괴롭힘에 해당할 수 있습니다."
+    },
+    "END_NOT_WORKER": {
+        "is_terminal": true,
+        "result": "NOT_A_WORKER",
+        "message": "근로기준법상 근로자에 해당하지 않을 수 있습니다."
+    },
+    "END_NOT_WAGE": {
+        "is_terminal": true,
+        "result": "NOT_A_WAGE",
+        "message": "임금체불로 보기 어렵습니다."
+    },
+    "END_NOT_DUE": {
+        "is_terminal": true,
+        "result": "PAYMENT_NOT_DUE",
+        "message": "아직 지급기일이 도래하지 않았습니다."
+    },
+    "END_NO_ARREARS": {
+        "is_terminal": true,
+        "result": "NO_ARREARS",
+        "message": "체불로 보기 어렵습니다."
+    },
+    "END_NOT_DISMISSAL": {
+        "is_terminal": true,
+        "result": "NOT_DISMISSAL",
+        "message": "해고에 해당하지 않을 수 있습니다."
+    },
+    "END_NOT_HARASSMENT": {
+        "is_terminal": true,
+        "result": "NOT_HARASSMENT",
+        "message": "괴롭힘으로 인정되기 어려울 수 있습니다."
+    }
+}

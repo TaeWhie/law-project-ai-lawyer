@@ -1,0 +1,9 @@
+streamlit
+langchain
+langchain-community
+langchain-chroma
+langchain-openai
+python-dotenv
+chromadb
+tiktoken
+pysqlite3-binary ; sys_platform == 'linux'
