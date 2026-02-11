@@ -14,6 +14,12 @@ from dotenv import load_dotenv
 # Load env - Load this before any other logic
 load_dotenv()
 
+# --- Streamlit Cloud Compatibility ---
+# LangChain needs os.environ['OPENAI_API_KEY'], but Streamlit Cloud stores it in st.secrets.
+# We manually bridge them if needed.
+if "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
 # --- Page Config (Must be first) ---
 st.set_page_config(
     page_title="AI 법률 조항 추천기",
