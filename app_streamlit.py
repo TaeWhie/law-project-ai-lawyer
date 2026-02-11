@@ -90,35 +90,44 @@ def main():
         
         with st.spinner("법률 조항을 검색하고 분석 중입니다..."):
             try:
-                # 1. Retrieve
-                # Increased k=5 to cover multiple issues (e.g., Wages + Dismissal)
-                results = retriever.retrieve(user_input, k=5, use_llm_rerank=True)
+                # 1. Retrieve Grouped Results
+                # Returns Dict[str, List[Document]]
+                grouped_results = retriever.retrieve_grouped(user_input, k_per_cat=3, top_k_cats=3)
                 
                 # 2. Display Articles (Left)
+                all_docs = []
                 with article_container:
-                    if not results:
+                    if not grouped_results:
                         st.error("관련된 법률 조항을 찾지 못했습니다.")
                     else:
-                        st.success(f"가장 관련성 높은 {len(results)}개의 조항을 찾았습니다.")
-                        for i, doc in enumerate(results):
-                            meta = doc.metadata
-                            title = meta.get("Title", "법률")
-                            article_full = meta.get("Article", "조항")
-                            
-                            with st.expander(f"{i+1}. {title} > {article_full}", expanded=True):
-                                st.markdown(f"**{article_full}**")
-                                st.code(doc.page_content, language="text")
+                        for cat_name, docs in grouped_results.items():
+                            st.markdown(f"#### 🏷️ {cat_name}")
+                            for i, doc in enumerate(docs):
+                                all_docs.append(doc)
+                                meta = doc.metadata
+                                title = meta.get("Title", "법률")
+                                article_full = meta.get("Article", "조항")
+                                
+                                with st.expander(f"{title} > {article_full}", expanded=False):
+                                    st.markdown(f"**{article_full}**")
+                                    st.code(doc.page_content, language="text")
+                            st.markdown("---")
                 
                 # 3. Generate Analysis (Right)
-                if results:
+                if all_docs:
                     with analysis_container:
                         try:
                             from app.llm_factory import LLMFactory
                             from langchain_core.prompts import ChatPromptTemplate
                             
                             docs_context = ""
-                            for doc in results:
-                                docs_context += f"- {doc.metadata.get('Article', '')}: {doc.page_content}\n"
+                            # Remove duplicates for context
+                            seen_articles = set()
+                            for doc in all_docs:
+                                art_key = f"{doc.metadata.get('Title', '')}_{doc.metadata.get('Article', '')}"
+                                if art_key not in seen_articles:
+                                    docs_context += f"- {doc.metadata.get('Article', '')}: {doc.page_content}\n"
+                                    seen_articles.add(art_key)
                             
                             lawyer_prompt = ChatPromptTemplate.from_template("""
                             너는 20년 경력의 따뜻하고 유능한 노동법 전문 변호사다. 의뢰인의 [상황]과 [관련 조항]을 바탕으로 아래 형식에 맞춰 상담 내용을 작성하라.
@@ -163,7 +172,9 @@ def main():
                             st.error(f"분석 중 오류 발생: {e}")
 
             except Exception as e:
+                import traceback
                 st.error(f"오류가 발생했습니다: {e}")
+                st.code(traceback.format_exc())
 
 if __name__ == "__main__":
     main()

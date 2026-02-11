@@ -151,14 +151,13 @@ class LawRetriever:
             print(f"Failed to embed categories: {e}")
             self.category_embeddings = []
 
-    def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2) -> List[str]:
-        """Identify top relevant categories and return their article number ranges."""
+    def _get_top_categories(self, query: str, top_k_cats: int = 2) -> List[Dict]:
+        """Identify top relevant categories for a query."""
         self._load_categories()
         if not hasattr(self, "category_embeddings") or not self.category_embeddings:
             return []
 
         import numpy as np
-        
         query_vec = self.embeddings.embed_query(query)
         
         # Calculate cosine similarity
@@ -174,50 +173,42 @@ class LawRetriever:
         similarities.sort(key=lambda x: x[0], reverse=True)
         
         # Select top K categories
-        # Filter out 'General Provisions' (총칙) and 'Penalties' (벌칙) as requested
         top_cats = []
         for score, idx in similarities:
             cat = self.categories[idx]
             name = cat.get('korean', '')
+            # Filter out 'General Provisions' (총칙) and 'Penalties' (벌칙)
             if "총칙" in name or "벌칙" in name:
                 continue
             top_cats.append(cat)
             if len(top_cats) >= top_k_cats:
                 break
+        return top_cats
+
+    def _get_article_numbers_for_category(self, cat: Dict) -> List[str]:
+        """Return article numbers associated with a category."""
+        allowed_nums = []
+        start = cat.get("start_num")
+        end = cat.get("end_num")
+        if start and end:
+            for i in range(int(start), int(end) + 1):
+                allowed_nums.append(str(i))
         
+        for core in cat.get("core_articles", []):
+            num = str(core["num"])
+            if num not in allowed_nums:
+                allowed_nums.append(num)
+        return allowed_nums
+
+    def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2) -> List[str]:
+        """Identify top relevant categories and return their article number ranges."""
+        top_cats = self._get_top_categories(query, top_k_cats=top_k_cats)
         print(f"DEBUG: Top Categories for '{query}': {[c['korean'] for c in top_cats]}")
 
-        # Collect article numbers
         allowed_nums = []
         for cat in top_cats:
-            start = cat.get("start_num")
-            end = cat.get("end_num")
-            # Also handle explicit core_articles lists if ranges aren't sufficient, but ranges are standard here.
-            # Assuming strictly numeric ranges for simplicity based on current json structure
-            if start and end:
-                # Naive range expansion, assuming articles are just numbers. 
-                # Note: Articles like 40-2 are tricky. Ideally we process all articles in the category.
-                # Inspecting json, 'core_articles' lists specific numbers. 
-                # Let's use 'core_articles' + range approximation if possible, OR just retrieval without number constraint?
-                # Actually, Chroma filter needs exact strings.
-                
-                # Better approach: Use the list of all articles in the category if available. 
-                # legal_index.json has 'core_articles' but maybe not ALL articles? 
-                # The prompt says "start_num", "end_num". 
-                # Let's generate strings for range.
-                for i in range(int(start), int(end) + 1):
-                    allowed_nums.append(str(i))
-                    # Handle sub-articles naively if needed? 
-                    # For now, strict integer match is capable of hitting "23" but not "23-2" if strict string match.
-                    # Metadata 'ArticleNumber' is usually just "23".
-            
-            # Also add explicit 'core_articles' just in case
-            for core in cat.get("core_articles", []):
-                num = str(core["num"])
-                if num not in allowed_nums:
-                    allowed_nums.append(num)
-                    
-        return allowed_nums
+            allowed_nums.extend(self._get_article_numbers_for_category(cat))
+        return list(set(allowed_nums))
 
     def retrieve(self, query: str, tier: str = None, k: int = 5, use_llm_rerank: bool = True) -> List[Any]:
         vs = self._get_vectorstore()
@@ -319,4 +310,28 @@ class LawRetriever:
         except Exception as e:
             print(f"Reranking Error (Falling back to heuristic): {e}")
             return results[:k]
+
+    def retrieve_grouped(self, query: str, k_per_cat: int = 3, top_k_cats: int = 3) -> Dict[str, List[Any]]:
+        """Perform separate vector searches for each identified legal category."""
+        vs = self._get_vectorstore()
+        top_cats = self._get_top_categories(query, top_k_cats=top_k_cats)
+        
+        grouped_results = {}
+        for cat in top_cats:
+            name = cat.get('korean', '기타')
+            allowed_articles = self._get_article_numbers_for_category(cat)
+            
+            if allowed_articles:
+                cat_filter = {"ArticleNumber": {"$in": allowed_articles}}
+                results = vs.similarity_search(query, k=k_per_cat, filter=cat_filter)
+                if results:
+                    grouped_results[name] = results
+            
+        # Fallback if no categories found or no results in categories
+        if not grouped_results:
+            results = self.retrieve(query, k=k_per_cat * top_k_cats, use_llm_rerank=False)
+            if results:
+                grouped_results["일반 결과"] = results
+                
+        return grouped_results
 
