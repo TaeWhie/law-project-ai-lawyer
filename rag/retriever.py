@@ -15,10 +15,11 @@ RERANK_PROMPT = """주어진 [사용자 질문]과 검색된 [법률 문서들] 
 {docs_text}
 
 [작성 규칙]
-1. 사용자가 임금이나 돈을 못 받았다고 하는 경우, 제43조(지급 원칙), 제36조(퇴사 후 청산), 제37조(지연이자) 이 3가지 조문은 매우 중요한 정보이므로 반드시 상위 결과에 포함되어야 한다.
-2. 각 문서가 질문의 법적 쟁점을 해결하는 데 얼마나 직접적인지 1~10점 사이의 점수를 매겨라.
-3. 상관관계가 높은 순서대로 상위 {k}개의 문서 인덱스(0부터 시작)만 JSON 배열 형식으로 응답하라.
-4. 결과는 반드시 다음과 같은 형식을 지켜라: {{"ranked_indices": [2, 0, 5]}}
+1. 사용자가 임금이나 돈을 못 받았다고 하는 경우, 제43조(지급 원칙), 제36조(퇴사 후 청산), 제37조(지연이자) 이 3가지 조문은 실무적으로 가장 중요하므로 반드시 최상단 결과에 포함되어야 한다.
+2. **주의**: 단순히 법을 어겼을 때 처벌을 규정하는 '벌칙' 또는 '벌금' 관련 조항(예: 제113조, 제114조 등)보다는 사용자의 구체적인 권리나 사용자의 의무를 명시한 '실체법적 조항'을 우선적으로 선정하라.
+3. 각 문서가 질문의 법적 쟁점을 해결하는 데 얼마나 직접적인지 1~10점 사이의 점수를 매겨라.
+4. 상관관계가 높은 순서대로 상위 {k}개의 문서 인덱스(0부터 시작)만 JSON 배열 형식으로 응답하라.
+5. 결과는 반드시 다음과 같은 형식을 지켜라: {{"ranked_indices": [2, 0, 5]}}
 """
 class LawRetriever:
     def __init__(self, persist_directory: str = "data/chroma", collection_name: str = "statutes"):
@@ -186,7 +187,7 @@ class LawRetriever:
                 break
         return top_cats
 
-    def _get_article_numbers_for_category(self, cat: Dict) -> List[str]:
+    def _get_article_numbers_for_category(self, cat: Dict, include_penalty: bool = False) -> List[str]:
         """Return article numbers associated with a category."""
         allowed_nums = []
         
@@ -218,30 +219,31 @@ class LawRetriever:
                     if sub_num not in allowed_nums:
                         allowed_nums.append(sub_num)
         
-        # 3. Penalty Articles
-        for penalty in cat.get("penalty_articles", []):
-            num = str(penalty["num"])
-            if num not in allowed_nums:
-                allowed_nums.append(num)
+        # 3. Penalty Articles (Optional)
+        if include_penalty:
+            for penalty in cat.get("penalty_articles", []):
+                num = str(penalty["num"])
+                if num not in allowed_nums:
+                    allowed_nums.append(num)
                 
         return allowed_nums
 
-    def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2) -> List[str]:
+    def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2, include_penalty: bool = False) -> List[str]:
         """Identify top relevant categories and return their article number ranges."""
         top_cats = self._get_top_categories(query, top_k_cats=top_k_cats)
         print(f"DEBUG: Top Categories for '{query}': {[c['korean'] for c in top_cats]}")
 
         allowed_nums = []
         for cat in top_cats:
-            allowed_nums.extend(self._get_article_numbers_for_category(cat))
+            allowed_nums.extend(self._get_article_numbers_for_category(cat, include_penalty=include_penalty))
         return list(set(allowed_nums))
 
-    def retrieve(self, query: str, tier: str = None, k: int = 5, use_llm_rerank: bool = True) -> List[Any]:
+    def retrieve(self, query: str, tier: str = None, k: int = 5, use_llm_rerank: bool = True, include_penalty: bool = False) -> List[Any]:
         vs = self._get_vectorstore()
         
         # 1. Category Filtering logic
         # First, try to narrow down the search space using semantic category matching
-        allowed_articles = self._get_relevant_article_numbers(query)
+        allowed_articles = self._get_relevant_article_numbers(query, include_penalty=include_penalty)
         
         search_filter = {}
         if tier:
@@ -336,7 +338,7 @@ class LawRetriever:
             print(f"Reranking Error (Falling back to heuristic): {e}")
             return results[:k]
 
-    def retrieve_grouped(self, query: str, k_per_cat: int = 3, top_k_cats: int = 3) -> Dict[str, List[Any]]:
+    def retrieve_grouped(self, query: str, k_per_cat: int = 3, top_k_cats: int = 3, include_penalty: bool = False) -> Dict[str, List[Any]]:
         """Perform separate vector searches for each identified legal category."""
         vs = self._get_vectorstore()
         top_cats = self._get_top_categories(query, top_k_cats=top_k_cats)
@@ -344,7 +346,7 @@ class LawRetriever:
         grouped_results = {}
         for cat in top_cats:
             name = cat.get('korean', '기타')
-            allowed_articles = self._get_article_numbers_for_category(cat)
+            allowed_articles = self._get_article_numbers_for_category(cat, include_penalty=include_penalty)
             
             if allowed_articles:
                 cat_filter = {"ArticleNumber": {"$in": allowed_articles}}
@@ -354,7 +356,7 @@ class LawRetriever:
             
         if not grouped_results:
             # When nothing matches category filter, fallback to global reranked search
-            results = self.retrieve(query, k=k_per_cat * top_k_cats, use_llm_rerank=True)
+            results = self.retrieve(query, k=k_per_cat * top_k_cats, use_llm_rerank=True, include_penalty=include_penalty)
             if results:
                 grouped_results["일반 결과"] = results
                 
