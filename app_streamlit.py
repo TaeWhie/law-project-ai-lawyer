@@ -39,31 +39,42 @@ with st.sidebar:
 if "user_email" not in st.session_state:
     st.session_state.user_email = "test@example.com"
 
+# --- Persistence Path Setup ---
+if "db_path" not in st.session_state:
+    # Detect Streamlit Cloud
+    is_streamlit_cloud = os.path.exists("/mount/src")
+    if is_streamlit_cloud:
+        # Use a unique temp path to avoid readonly/lock issues
+        import tempfile
+        st.session_state.db_path = os.path.join(tempfile.gettempdir(), "law_chroma_db")
+    else:
+        st.session_state.db_path = "data/chroma"
+
 # --- Sidebar Admin Tools ---
 with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ 관리자 도구")
-    if st.button("🔄 데이터베이스 재인덱싱", help="서버의 벡터 데이터베이스를 처음부터 다시 구축합니다 (스키마 오류 해결용)"):
+    st.markdown(f"**DB 경로**: `{st.session_state.db_path}`")
+    
+    if st.button("🔄 데이터베이스 재인덱싱", help="서버의 벡터 데이터베이스를 처음부터 다시 구축합니다."):
         with st.spinner("데이터 인덱싱 중..."):
             try:
-                # Clear retriever from session state to force reload and close connection
+                # 1. Close and delete existing retriever
                 if "retriever" in st.session_state:
                     del st.session_state.retriever
                 
-                # Determine writable path - More robust detection
-                is_streamlit_cloud = os.path.exists("/mount/src")
-                persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
-                
-                st.info(f"사용 중인 인덱스 경로: {persist_dir}")
-                
-                # Ensure the directory exists
-                if not os.path.exists(persist_dir):
-                    os.makedirs(persist_dir, exist_ok=True)
+                # 2. Ensure directory is clean if using temp
+                if "/tmp" in st.session_state.db_path or "temp" in st.session_state.db_path.lower():
+                    import shutil
+                    if os.path.exists(st.session_state.db_path):
+                        shutil.rmtree(st.session_state.db_path)
+                    os.makedirs(st.session_state.db_path, exist_ok=True)
 
+                # 3. Perform Ingestion
                 from scripts.ingest import ingest_statutes
-                ingest_statutes(persist_directory=persist_dir)
+                ingest_statutes(persist_directory=st.session_state.db_path)
                 
-                st.success("인덱싱이 완료되었습니다! 이제 검색을 다시 시도해 보세요.")
+                st.success("인덱싱이 완료되었습니다!")
             except Exception as e:
                 st.error(f"인덱싱 실패: {e}")
                 import traceback
@@ -76,15 +87,8 @@ def main():
     # --- Initialize Retriever (Cached) ---
     if "retriever" not in st.session_state or not hasattr(st.session_state.retriever, "retrieve_grouped"):
         try:
-            # Use /tmp/chroma on Streamlit Cloud to avoid readonly database errors
-            is_streamlit_cloud = os.path.exists("/mount/src")
-            persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
-            
-            with st.sidebar:
-                st.markdown(f"**DB 경로**: `{persist_dir}`")
-            
             st.session_state.retriever = LawRetriever(
-                persist_directory=persist_dir,
+                persist_directory=st.session_state.db_path,
                 collection_name="statutes"
             )
         except Exception as e:
