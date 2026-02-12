@@ -22,19 +22,21 @@ from langchain_core.prompts import ChatPromptTemplate
 from difflib import SequenceMatcher
 
 class Orchestrator:
-    def __init__(self):
-        self._ensure_legal_index()
+    def __init__(self, persist_directory: str = "data/chroma", refresh_index: bool = True):
+        self.persist_directory = persist_directory
+        if refresh_index:
+            self._ensure_legal_index()
         self.classifier = IssueClassifier()
         self.validator = FactValidator()
-        self.retriever = LawRetriever()
+        self.retriever = LawRetriever(persist_directory=persist_directory)
         self.composer = ResponseComposer()
         self.llm = LLMFactory.create_llm("openai")
         self.collector = DataCollector()
 
     def _ensure_legal_index(self):
         from app.indexer import LegalIndexer
-        print("Refreshing Legal Index and Vectors on startup...")
-        indexer = LegalIndexer()
+        print(f"Refreshing Legal Index and Vectors on startup (Path: {self.persist_directory})...")
+        indexer = LegalIndexer(persist_directory=self.persist_directory)
         indexer.run()
 
     def _clean_json_output(self, text: str) -> str:
