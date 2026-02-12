@@ -352,9 +352,9 @@ class LawRetriever:
                 if results:
                     grouped_results[name] = results
             
-        # Fallback if no categories found or no results in categories
         if not grouped_results:
-            results = self.retrieve(query, k=k_per_cat * top_k_cats, use_llm_rerank=False)
+            # When nothing matches category filter, fallback to global reranked search
+            results = self.retrieve(query, k=k_per_cat * top_k_cats, use_llm_rerank=True)
             if results:
                 grouped_results["일반 결과"] = results
                 
