@@ -24,9 +24,13 @@ class ArticleMarkdownLoader:
             full_text = f"{article_title}\n{article_body.strip()}"
             
             # Extract metadata from filename or header if needed
+            article_num_match = re.search(r'제(\d+)조', article_title)
+            article_num = article_num_match.group(1) if article_num_match else None
+            
             metadata = {
                 "source": self.file_path,
-                "article": article_title
+                "article": article_title,
+                "ArticleNumber": article_num
             }
             
             documents.append(Document(page_content=full_text, metadata=metadata))

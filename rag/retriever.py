@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 import os
 import json
 
-RERANK_PROMPT = """주어진 [사용자 질문]과 검색된 [법률 문서들] 사이의 관련성을 분석하여, 가장 관련성이 높은 상위 {k}개의 문서만 선별하라.
+RERANK_PROMPT = """주어진 [사용자 질문]과 검색된 [법률 문서들] 사이의 관련성을 분석하여, 질문을 해결하는 데 가장 필수적인 상위 {k}개의 문서를 선정하라.
 
 [사용자 질문]
 {query}
@@ -15,9 +15,10 @@ RERANK_PROMPT = """주어진 [사용자 질문]과 검색된 [법률 문서들] 
 {docs_text}
 
 [작성 규칙]
-1. 각 문서가 질문의 법적 쟁점을 해결하는 데 얼마나 직접적인지 1~10점 사이의 점수를 매겨라.
-2. 점수가 높은 순서대로 상위 {k}개의 문서 인덱스(0부터 시작)만 JSON 배열 형식으로 응답하라.
-3. 결과는 반드시 다음과 같은 형식을 지켜라: {{"ranked_indices": [2, 0, 5]}}
+1. 사용자가 임금이나 돈을 못 받았다고 하는 경우, 제43조(지급 원칙), 제36조(퇴사 후 청산), 제37조(지연이자), 제109조(처벌/벌칙) 이 4가지 조문은 반드시 상위 결과에 포함되어야 하는 최우선 순위 문서이다. 특히 제109조는 형사 처벌과 직결되므로 누락해서는 안 된다.
+2. 각 문서가 질문의 법적 쟁점을 해결하는 데 얼마나 직접적인지 1~10점 사이의 점수를 매겨라.
+3. 상관관계가 높은 순서대로 상위 {k}개의 문서 인덱스(0부터 시작)만 JSON 배열 형식으로 응답하라.
+4. 결과는 반드시 다음과 같은 형식을 지켜라: {{"ranked_indices": [2, 0, 5]}}
 """
 class LawRetriever:
     def __init__(self, persist_directory: str = "data/chroma", collection_name: str = "statutes"):
@@ -216,6 +217,13 @@ class LawRetriever:
                     sub_num = f"{num}의{sub_val}"
                     if sub_num not in allowed_nums:
                         allowed_nums.append(sub_num)
+        
+        # 3. Penalty Articles
+        for penalty in cat.get("penalty_articles", []):
+            num = str(penalty["num"])
+            if num not in allowed_nums:
+                allowed_nums.append(num)
+                
         return allowed_nums
 
     def _get_relevant_article_numbers(self, query: str, top_k_cats: int = 2) -> List[str]:
@@ -264,8 +272,7 @@ class LawRetriever:
                 final_filter = cat_filter
                 
             print(f"DEBUG: Applying Category Filter: {final_filter}")
-            results = vs.similarity_search(query, k=k*2, filter=final_filter) # Fetch a candidate pool
-            print(f"DEBUG: Filtered Search Results Count: {len(results)}")
+            results = vs.similarity_search(query, k=k*6, filter=final_filter) 
             
             # If category filtering yields too few results, fallback to full search
             if len(results) < k:
