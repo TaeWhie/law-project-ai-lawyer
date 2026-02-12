@@ -39,6 +39,33 @@ with st.sidebar:
 if "user_email" not in st.session_state:
     st.session_state.user_email = "test@example.com"
 
+# --- Sidebar Admin Tools ---
+with st.sidebar:
+    st.markdown("---")
+    st.markdown("### ⚙️ 관리자 도구")
+    if st.button("🔄 데이터베이스 재인덱싱", help="서버의 벡터 데이터베이스를 처음부터 다시 구축합니다 (스키마 오류 해결용)"):
+        with st.spinner("데이터 인덱싱 중..."):
+            try:
+                # Add current directory to path for imports if needed
+                if os.getcwd() not in sys.path:
+                    sys.path.append(os.getcwd())
+                
+                from scripts.ingest import ingest_statutes
+                # Clear existing if any (optional, ingest_statutes usually appends or overwrites)
+                # For safety, let's just run it. Ingest statutes in ingest.py uses Chroma(persist_directory=...)
+                # which handles initialization.
+                ingest_statutes()
+                
+                # Clear retriever from session state to force reload
+                if "retriever" in st.session_state:
+                    del st.session_state.retriever
+                
+                st.success("인덱싱이 완료되었습니다! 이제 검색을 다시 시도해 보세요.")
+            except Exception as e:
+                st.error(f"인덱싱 실패: {e}")
+                import traceback
+                st.code(traceback.format_exc())
+
 def main():
     st.title("⚖️ AI 법률 조항 추천기")
     st.markdown("---")

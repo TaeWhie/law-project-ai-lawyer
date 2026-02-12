@@ -1,9 +1,9 @@
 streamlit
 langchain
 langchain-community
-langchain-chroma
+langchain-chroma==0.2.6
 langchain-openai
 python-dotenv
-chromadb
+chromadb==1.4.1
 tiktoken
 pysqlite3-binary ; sys_platform == 'linux'
