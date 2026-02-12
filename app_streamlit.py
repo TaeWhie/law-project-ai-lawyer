@@ -43,27 +43,22 @@ if "user_email" not in st.session_state:
 with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ 관리자 도구")
-    if st.button("🔄 데이터베이스 재인덱싱", help="서버의 벡터 데이터베이스를 처음부터 다시 구축합니다 (스키마 오류 해결용)"):
-        with st.spinner("데이터 인덱싱 중..."):
-            try:
-                # Add current directory to path for imports if needed
-                if os.getcwd() not in sys.path:
-                    sys.path.append(os.getcwd())
+                # Clear retriever from session state to force reload and close connection
+                if "retriever" in st.session_state:
+                    del st.session_state.retriever
                 
-                # Determine writable path
-                is_streamlit_cloud = os.getenv("STREAMLIT_CLOUD") or "STREAMLIT_SERVER_PORT" in os.environ
+                # Determine writable path - More robust detection
+                is_streamlit_cloud = os.path.exists("/mount/src")
                 persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
                 
+                st.info(f"사용 중인 인덱스 경로: {persist_dir}")
+                
                 # Ensure the directory exists
-                if not os.path.exists(os.path.dirname(persist_dir)):
-                    os.makedirs(os.path.dirname(persist_dir), exist_ok=True)
+                if not os.path.exists(persist_dir):
+                    os.makedirs(persist_dir, exist_ok=True)
 
                 from scripts.ingest import ingest_statutes
                 ingest_statutes(persist_directory=persist_dir)
-                
-                # Clear retriever from session state to force reload
-                if "retriever" in st.session_state:
-                    del st.session_state.retriever
                 
                 st.success("인덱싱이 완료되었습니다! 이제 검색을 다시 시도해 보세요.")
             except Exception as e:
@@ -79,8 +74,11 @@ def main():
     if "retriever" not in st.session_state or not hasattr(st.session_state.retriever, "retrieve_grouped"):
         try:
             # Use /tmp/chroma on Streamlit Cloud to avoid readonly database errors
-            is_streamlit_cloud = os.getenv("STREAMLIT_CLOUD") or "STREAMLIT_SERVER_PORT" in os.environ
+            is_streamlit_cloud = os.path.exists("/mount/src")
             persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
+            
+            with st.sidebar:
+                st.markdown(f"**DB 경로**: `{persist_dir}`")
             
             st.session_state.retriever = LawRetriever(
                 persist_directory=persist_dir,
