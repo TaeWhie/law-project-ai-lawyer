@@ -43,6 +43,9 @@ if "user_email" not in st.session_state:
 with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ 관리자 도구")
+    if st.button("🔄 데이터베이스 재인덱싱", help="서버의 벡터 데이터베이스를 처음부터 다시 구축합니다 (스키마 오류 해결용)"):
+        with st.spinner("데이터 인덱싱 중..."):
+            try:
                 # Clear retriever from session state to force reload and close connection
                 if "retriever" in st.session_state:
                     del st.session_state.retriever
