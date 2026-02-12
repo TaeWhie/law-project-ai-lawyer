@@ -6,8 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def ingest_statutes():
-    persist_directory = "data/chroma"
+def ingest_statutes(persist_directory="data/chroma"):
     law_dir = "data/laws"
     
     if not os.path.exists(law_dir):
@@ -16,7 +15,7 @@ def ingest_statutes():
 
     from app.llm_factory import LLMFactory
     embed_type = os.getenv("EMBEDDING_TYPE", os.getenv("LLM_TYPE", "openai"))
-    print(f"Initializing Embeddings: {embed_type}...")
+    print(f"Initializing Embeddings: {os.getenv('EMBEDDING_TYPE', 'openai')}...")
     embeddings = LLMFactory.create_embeddings(embed_type)
     
     # Initialize or load Chroma

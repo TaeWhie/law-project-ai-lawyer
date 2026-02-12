@@ -50,11 +50,16 @@ with st.sidebar:
                 if os.getcwd() not in sys.path:
                     sys.path.append(os.getcwd())
                 
+                # Determine writable path
+                is_streamlit_cloud = os.getenv("STREAMLIT_CLOUD") or "STREAMLIT_SERVER_PORT" in os.environ
+                persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
+                
+                # Ensure the directory exists
+                if not os.path.exists(os.path.dirname(persist_dir)):
+                    os.makedirs(os.path.dirname(persist_dir), exist_ok=True)
+
                 from scripts.ingest import ingest_statutes
-                # Clear existing if any (optional, ingest_statutes usually appends or overwrites)
-                # For safety, let's just run it. Ingest statutes in ingest.py uses Chroma(persist_directory=...)
-                # which handles initialization.
-                ingest_statutes()
+                ingest_statutes(persist_directory=persist_dir)
                 
                 # Clear retriever from session state to force reload
                 if "retriever" in st.session_state:
@@ -73,8 +78,12 @@ def main():
     # --- Initialize Retriever (Cached) ---
     if "retriever" not in st.session_state or not hasattr(st.session_state.retriever, "retrieve_grouped"):
         try:
+            # Use /tmp/chroma on Streamlit Cloud to avoid readonly database errors
+            is_streamlit_cloud = os.getenv("STREAMLIT_CLOUD") or "STREAMLIT_SERVER_PORT" in os.environ
+            persist_dir = "/tmp/chroma" if is_streamlit_cloud else "data/chroma"
+            
             st.session_state.retriever = LawRetriever(
-                persist_directory="data/chroma",
+                persist_directory=persist_dir,
                 collection_name="statutes"
             )
         except Exception as e:
